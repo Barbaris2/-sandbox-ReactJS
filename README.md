@@ -1,4 +1,4 @@
-![](images/src/filename%sandboxreact.jpg)
+![](https://github.com/Barbaris2/-sandbox-ReactJS/blob/master/src/images/sandboxreact.jpg?style=center)
 
 # [sandbox] ReactJS
 
