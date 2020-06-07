@@ -14,10 +14,12 @@
 
 - `git checkout master`- пустой проект [Create React App](https://github.com/facebook/create-react-app).
 - `git checkout 01_createContext` - передача данных через дерево компонентов без передачи пропсов.
-- `git checkout 02_createContext_contextType` - передача данных через дерево компонентов с статическим свойством **static contextType** для работы с контекстом .
+- `git checkout 02_createContext_contextType` - передача данных через дерево компонентов с статическим свойством **static contextType** для работы с контекстом.
+- `git checkout 03_memo` - оптимизация рендеринга DOM-дерева при помощи [HOC](https://ru.reactjs.org/docs/higher-order-components.html) **React.memo**. Используется для простых функциональных компонентов. Если пропсы не изменились, рендеринга не произойдет.
 
 ### Ветки репозитория:
 
 - `git checkout master`
 - `git checkout 01_createContext`
 - `git checkout 02_createContext_contextType`
+- `git checkout 03_memo`
