@@ -21,8 +21,9 @@
 - `git checkout 04_Routing` - маршрутизация с использованием библиотеки **react-router-dom**.
 - `git checkout 05_lazy` - **React.lazy()** - метод из API - _React suspense_, который может грузить компоненты асинхронно. Позволяет определять компонент, который загружается динамически. Работает только если рендеринг происходит на клиенте.
 - `git checkout 06_getDerivedStateFromError` - это улучшенная функциональность метода _componentDidCatch_ для отлавливания ошибок рендеринга в дочерних компонентах.
-- `git checkout 07_useContext` - **useContext** - хук для использования контекста.
-- `git checkout 08_useState` - **useState** - хук для использования _state_ внутри функционального компонента
+- `git checkout 07_useContext` - **useContext()** - хук для использования контекста.
+- `git checkout 08_useState` - **useState()** - хук для использования _state_ внутри функционального компонента
+- `git checkout 09_useEffect` - **useEffect()** метод жизненного цикла, представляет собой совокупность методов _componentDidMount_, _componentDidUpdate_, и _componentWillUnmount_.
 
 ### Ветки репозитория:
 
@@ -35,3 +36,4 @@
 - `git checkout 06_getDerivedStateFromError`
 - `git checkout 07_useContext`
 - `git checkout 08_useState`
+- `git checkout 09_useEffect`
