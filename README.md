@@ -1,4 +1,4 @@
-![](images/filename sandboxreact.jpg)
+![](images/filename%sandboxreact.jpg)
 
 # [sandbox] ReactJS
 
