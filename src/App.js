@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import Item from './Item';
 import { ThemeContext, PodcastContext } from './app-context';
 
@@ -6,11 +6,38 @@ const App = () => {
   const podcast = useContext(PodcastContext);
   const theme = useContext(ThemeContext);
   const [count, setCount] = useState(0);
-  const [value, changeValue] = useState('Test value');
+  const [value, changeValue] = useState('Look at title');
+  const [width, setWidth] = useState(window.innerWidth);
+  const [user, setUser] = useState(null);
 
   const handleValueChange = e => {
     changeValue(e.target.value);
   };
+
+  useEffect(() => {
+    document.title = value;
+  });
+
+  useEffect(() => {
+    const handleWidth = () => setWidth(window.innerWidth);
+    window.addEventListener('resize', handleWidth);
+    return () => {
+      window.removeEventListener('resize', handleWidth);
+    };
+  });
+
+  const fetchUser = async setUser => {
+    const response = await fetch('https://randomuser.me/api/');
+    const data = await response.json();
+    setUser(data.results[0]);
+  };
+
+  useEffect(
+    () => {
+      fetchUser(setUser);
+    },
+    [] // Empty array ensures effect is only run on mount and unmount
+  );
 
   return (
     <div className={`card ${theme}`}>
@@ -24,6 +51,14 @@ const App = () => {
 
       <Item label={`${value}`}>
         <input value={value} onChange={handleValueChange} />
+      </Item>
+
+      <Item label={`Browser window is`}>
+        <h4>{width}</h4>
+      </Item>
+
+      <Item label='Fetch User'>
+        <div>{user ? `${user.name.first} ${user.name.last}` : ''}</div>
       </Item>
     </div>
   );
