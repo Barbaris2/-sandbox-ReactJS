@@ -16,4 +16,4 @@
 
 ### Ветки Подкаста:
 
-- `git checkout master` [create-react-app](http://localhost:3000)
+- `git checkout master`
