@@ -1,37 +1,26 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment, Component } from 'react';
+import { BrowserRouter, Route, NavLink } from 'react-router-dom';
 
-import Login from './components/Login';
+import Home from './components/Home';
 import Profile from './components/Profile';
+import Contacts from './components/Contacts';
 
 class App extends Component {
-  state = {
-    isAuth: false
-  };
-
-  onLogOut = () => {
-    this.setState({
-      isAuth: false
-    });
-  };
-
-  onLogIn = () => {
-    this.setState({
-      isAuth: true
-    });
-  };
-
   render() {
-    const { isAuth } = this.state;
-
     return (
-      <Fragment>
-        <Login
-          isAuth={isAuth}
-          onLogIn={this.onLogIn}
-          onLogOut={this.onLogOut}
-        />
-        <Profile isAuth={isAuth} />
-      </Fragment>
+      <BrowserRouter>
+        <Fragment>
+          <nav>
+            <NavLink style={{ marginRight: '20px' }} to='/profile'>
+              Profile Page
+            </NavLink>
+            <NavLink to='/contacts'>Contacts Page</NavLink>
+          </nav>
+          <Route path='/' exact component={Home} />
+          <Route path='/profile' component={Profile} />
+          <Route path='/contacts' component={Contacts} />
+        </Fragment>
+      </BrowserRouter>
     );
   }
 }
