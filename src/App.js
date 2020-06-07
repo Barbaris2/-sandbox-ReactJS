@@ -1,23 +1,18 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
+import Item from './Item';
+import { ThemeContext, PodcastContext } from './app-context';
 
-class App extends Component {
-  state = { hasError: false };
+const App = () => {
+  const podcast = useContext(PodcastContext);
+  const theme = useContext(ThemeContext);
 
-  static getDerivedStateFromError(error) {
-    console.log(error);
-    return { hasError: true };
-  }
-
-  render() {
-    const { children } = this.props;
-    const { hasError } = this.state;
-
-    if (hasError) {
-      return <h1>Something went wrong.</h1>;
-    }
-
-    return children;
-  }
-}
+  return (
+    <div className={`card ${theme}`}>
+      <Item label='Podcast'>
+        <h4>{podcast}</h4>
+      </Item>
+    </div>
+  );
+};
 
 export default App;
