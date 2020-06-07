@@ -13,7 +13,9 @@
 ## Описание веток
 
 - `git checkout master`- пустой проект [Create React App](https://github.com/facebook/create-react-app).
+- `git checkout 01_createContext` - передача данных через дерево компонентов без передачи пропсов.
 
-### Ветки Подкаста:
+### Ветки репозитория:
 
 - `git checkout master`
+- `git checkout 01_createContext`
