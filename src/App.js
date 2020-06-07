@@ -1,35 +1,22 @@
-import React, { Fragment, Component, Suspense } from 'react';
-
-import Contacts from './components/Contacts';
-
-const Profile = React.lazy(() => import('./components/Profile'));
+import React, { Component } from 'react';
 
 class App extends Component {
-  state = {
-    showProfile: false
-  };
+  state = { hasError: false };
 
-  showProfileToggle = () => {
-    this.setState(({ showProfile }) => ({
-      showProfile: !showProfile
-    }));
-  };
+  static getDerivedStateFromError(error) {
+    console.log(error);
+    return { hasError: true };
+  }
 
   render() {
-    const { showProfile } = this.state;
+    const { children } = this.props;
+    const { hasError } = this.state;
 
-    return (
-      <Fragment>
-        <button onClick={this.showProfileToggle}>Toggle Profile</button>
-        {showProfile ? (
-          <Suspense fallback={<div>Loading...</div>}>
-            <Profile />
-          </Suspense>
-        ) : (
-          <Contacts />
-        )}
-      </Fragment>
-    );
+    if (hasError) {
+      return <h1>Something went wrong.</h1>;
+    }
+
+    return children;
   }
 }
 
