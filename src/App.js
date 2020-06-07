@@ -1,26 +1,34 @@
-import React, { Fragment, Component } from 'react';
-import { BrowserRouter, Route, NavLink } from 'react-router-dom';
+import React, { Fragment, Component, Suspense } from 'react';
 
-import Home from './components/Home';
-import Profile from './components/Profile';
 import Contacts from './components/Contacts';
 
+const Profile = React.lazy(() => import('./components/Profile'));
+
 class App extends Component {
+  state = {
+    showProfile: false
+  };
+
+  showProfileToggle = () => {
+    this.setState(({ showProfile }) => ({
+      showProfile: !showProfile
+    }));
+  };
+
   render() {
+    const { showProfile } = this.state;
+
     return (
-      <BrowserRouter>
-        <Fragment>
-          <nav>
-            <NavLink style={{ marginRight: '20px' }} to='/profile'>
-              Profile Page
-            </NavLink>
-            <NavLink to='/contacts'>Contacts Page</NavLink>
-          </nav>
-          <Route path='/' exact component={Home} />
-          <Route path='/profile' component={Profile} />
-          <Route path='/contacts' component={Contacts} />
-        </Fragment>
-      </BrowserRouter>
+      <Fragment>
+        <button onClick={this.showProfileToggle}>Toggle Profile</button>
+        {showProfile ? (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Profile />
+          </Suspense>
+        ) : (
+          <Contacts />
+        )}
+      </Fragment>
     );
   }
 }
